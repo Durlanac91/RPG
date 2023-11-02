@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.GameLogic.UI
 {
     public class PlayerGearExplorer : MonoBehaviour
     {
+        public static PlayerGearExplorer Instance;
+
         [SerializeField] private GameObject items;
         [SerializeField] private PlayerGearExplorerItem prefabForEquipped;
         [SerializeField] private PlayerGearExplorerItem prefabForUnequipped;
@@ -15,12 +18,21 @@ namespace Game.GameLogic.UI
 
         public PlayerGearItemConfig[] PlayerGearItemConfigs { get => _playerGearItemConfigs; }
 
+        private void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+
+            _playerGearItemConfigs = Resources.LoadAll<PlayerGearItemConfig>("Configs/PlayerGearItems");
+            _playerGearSlot = GetComponentsInChildren<PlayerGearSlot>(true);
+        }
+
         private void OnEnable()
         {
             GameManager.Instance.IsInputAllowed = false;
-            _playerGearItemConfigs = Resources.LoadAll<PlayerGearItemConfig>("Configs/PlayerGearItems");
-            _playerGearSlot = GetComponentsInChildren<PlayerGearSlot>(true);
-
+            
             foreach (var slot in _playerGearSlot)
             {
                 slot.Initialize();
@@ -109,6 +121,7 @@ namespace Game.GameLogic.UI
             DestroyAllItems();
             GenerateEquippedItems();
             GenerateUnequippedItems();
+            Player.Instance.OnGearChange?.Invoke();
         }
 
         public void UnequipSelectedItemFromGear()
@@ -129,8 +142,28 @@ namespace Game.GameLogic.UI
             DestroyAllItems();
             GenerateEquippedItems();
             GenerateUnequippedItems();
+            Player.Instance.OnGearChange?.Invoke();
+        }
 
-            
+        public void SellSelectedItemFromGear()
+        {
+            bool noneItemSelected = true;
+            foreach (var item in GetComponentsInChildren<PlayerGearExplorerItem>())
+            {
+                if (item.IsSelected)
+                {
+                    item.Sell();
+                    noneItemSelected = false;
+                    break;
+                }
+            }
+
+            if (noneItemSelected) return;
+
+            DestroyAllItems();
+            GenerateEquippedItems();
+            GenerateUnequippedItems();
+            Player.Instance.OnGearChange?.Invoke();
         }
 
         private void DestroyAllItems()

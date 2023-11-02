@@ -36,9 +36,14 @@ namespace Game.GameLogic
             return Convert.ToBoolean(PlayerPrefs.GetInt("item_bought_" + itemName, 0));
         }
 
-        public void SetItemBought(string itemName)
+        public void ItemBought(string itemName)
         {
             PlayerPrefs.SetInt("item_bought_" + itemName, 1);
+        }
+
+        public void ItemSell(string itemName)
+        {
+            PlayerPrefs.SetInt("item_bought_" + itemName, 0);
         }
 
         public void SetItemEquipped(string itemName)

@@ -20,6 +20,13 @@ namespace Game.GameLogic.UI
         public void Show()
         {
             content.SetActive(true);
+            GameManager.Instance.IsInputAllowed = false;
+        }
+
+        public void Hide()
+        {
+            content.SetActive(false);
+            GameManager.Instance.IsInputAllowed = true;
         }
     }
 }

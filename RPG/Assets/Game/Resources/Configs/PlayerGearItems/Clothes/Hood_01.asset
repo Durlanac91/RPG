@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab00abb85bba2d4cae5e3c6a36898f2, type: 3}
   m_Name: Hood_01
   m_EditorClassIdentifier: 
+  price: 100
   displayName: Hood 1
   gearItemClass: Clothes
   gearItemType: Hood

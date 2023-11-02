@@ -39,20 +39,13 @@ namespace Game.GameLogic
             OnGameStart?.Invoke();
         }
 
-        private void LoadGame()
+        public void LoadGame()
         {
             _spentableResources = Resources.LoadAll<SpentableResource>("Configs/Economy");
 
             foreach (var resource in _spentableResources)
             {
                 resource.Load();
-            }
-
-            _shopItemConfigs = Resources.LoadAll<ShopItemConfig>("Configs/ShopItems");
-
-            foreach (var config in _shopItemConfigs)
-            {
-                config.Load();
             }
 
             _playerGearItemConfig = Resources.LoadAll<PlayerGearItemConfig>("Configs/PlayerGearItems");

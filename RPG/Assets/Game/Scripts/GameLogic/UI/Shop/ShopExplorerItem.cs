@@ -39,15 +39,15 @@ namespace Game.GameLogic.UI
             mainIcon.sprite = Resources.Load<Sprite>("Assets/" + config.ShopItemType + "/" + config.name);
             _button = GetComponent<Button>();
             _shopExplorer = GetComponentInParent<ShopExplorer>();
-            alreadyBoughtOverlay.gameObject.SetActive(config.IsOwned);
+            alreadyBoughtOverlay.gameObject.SetActive(config.IsOwned());
             Refresh();
         }
 
         public void Refresh()
         {
-            _button.enabled = _price > spentableResource.CurrentResource == false && _shopItemConfig.IsOwned == false;
-            notEnoughCoinsOverlay.gameObject.SetActive(_price > spentableResource.CurrentResource && _shopItemConfig.IsOwned == false);
-            alreadyBoughtOverlay.gameObject.SetActive(_shopItemConfig.IsOwned);
+            _button.enabled = _price > spentableResource.CurrentResource == false && _shopItemConfig.IsOwned() == false;
+            notEnoughCoinsOverlay.gameObject.SetActive(_price > spentableResource.CurrentResource && _shopItemConfig.IsOwned() == false);
+            alreadyBoughtOverlay.gameObject.SetActive(_shopItemConfig.IsOwned());
         }
 
         public void Select()
@@ -67,8 +67,7 @@ namespace Game.GameLogic.UI
         {
             if (_price > spentableResource.CurrentResource) return;
 
-            PlayerSave.Instance.SetItemBought(_shopItemConfig.name);
-            _shopItemConfig.Load();
+            PlayerSave.Instance.ItemBought(_shopItemConfig.name);
             _shopExplorer.DeselectAllItems();
             spentableResource.RemoveResource(_price);
         }

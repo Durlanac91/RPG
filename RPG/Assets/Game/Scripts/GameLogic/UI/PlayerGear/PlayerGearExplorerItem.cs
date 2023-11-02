@@ -8,7 +8,7 @@ namespace Game.GameLogic.UI
 {
     public class PlayerGearExplorerItem : MonoBehaviour
     {
-        //[SerializeField] private SpentableResource spentableResource;
+        [SerializeField] private SpentableResource spentableResource;
         [SerializeField] private Image selectedOverlay;
         [SerializeField] private TextMeshProUGUI textName;
         [SerializeField] private Image mainIcon;
@@ -19,11 +19,6 @@ namespace Game.GameLogic.UI
 
         public bool IsSelected { get => _isSelected; }
         public PlayerGearItemConfig PlayerGearItemConfig { get => _playerGearItemConfig; }
-
-        private void Start()
-        {
-            // neki drugi refresh
-        }
 
         public void Initialize(PlayerGearItemConfig config)
         {
@@ -57,6 +52,15 @@ namespace Game.GameLogic.UI
         public void Unequip()
         {
             PlayerSave.Instance.SetItemUnequipped(_playerGearItemConfig.name);
+            _playerGearItemConfig.Load();
+            _playerGearExplorer.DeselectAllItems();
+        }
+
+        public void Sell()
+        {
+            PlayerSave.Instance.SetItemUnequipped(_playerGearItemConfig.name);
+            PlayerSave.Instance.ItemSell(_playerGearItemConfig.name);
+            spentableResource.AddResource(_playerGearItemConfig.Price);
             _playerGearItemConfig.Load();
             _playerGearExplorer.DeselectAllItems();
         }

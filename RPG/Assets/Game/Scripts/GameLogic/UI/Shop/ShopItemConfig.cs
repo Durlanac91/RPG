@@ -11,16 +11,14 @@ namespace Game.GameLogic.UI
         [SerializeField] private int price;
         [Tooltip("Shop Item Type is used as a Config Key for loading icons")]
         [SerializeField] private string shopItemType;
-        private bool _isOwned;
 
-        public void Load()
+        public bool IsOwned()
         {
-            _isOwned = PlayerSave.Instance.IsItemBought(name);
+            return PlayerSave.Instance.IsItemBought(name);
         }
 
         public int Price { get => price; }
         public string ShopItemType { get => shopItemType; }
-        public bool IsOwned { get => _isOwned; }
         public string DisplayName { get => displayName; }
     }
 }

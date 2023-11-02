@@ -16,9 +16,8 @@ namespace Game.GameLogic.UI
 
         private void OnEnable()
         {
-            GameManager.Instance.IsInputAllowed = false;
-
             _shopItemConfigs = Resources.LoadAll<ShopItemConfig>(_shopItemsPath);
+            GameManager.Instance.IsInputAllowed = false;
 
             foreach (var config in _shopItemConfigs)
             {

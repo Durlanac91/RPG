@@ -7,7 +7,7 @@ namespace Game.GameLogic.UI
     [CreateAssetMenu(fileName = "PlayerGearItemConfig", menuName = "Gameplay/PlayerGear/PlayerGearItemConfig", order = 0)]
     public class PlayerGearItemConfig : ScriptableObject
     {
-        //[SerializeField] private int price;
+        [SerializeField] private int price;
         [SerializeField] private string displayName;
         [Tooltip("Gear Item Class is used as a Config Key for loading icons and classification")]
         [SerializeField] private string gearItemClass;
@@ -25,7 +25,7 @@ namespace Game.GameLogic.UI
             return PlayerSave.Instance.IsItemBought(name);
         }
 
-        //public int Price { get => price; }
+        public int Price { get => price; }
         public string GearItemClass { get => gearItemClass; }
         public string GearItemType { get => gearItemType; }
         public bool IsEquipped { get => _isEquipped; }

@@ -28,7 +28,11 @@ namespace Game.GameLogic
 
         private void FixedUpdate()
         {
-            if (GameManager.Instance.IsInputAllowed == false) return;
+            if (GameManager.Instance.IsInputAllowed == false)
+            {
+                _moveForce = Vector2.zero;
+                return;
+            }
 
             var nextPosition = _moveForce * _speed * Time.fixedDeltaTime;
 

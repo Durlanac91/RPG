@@ -10,6 +10,7 @@ namespace Game.GameLogic.UI
         public void StartNewGame()
         {
             GetComponent<PlayerSave>().DeleteAllData();
+            GameManager.Instance.LoadGame();
             SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         }
 

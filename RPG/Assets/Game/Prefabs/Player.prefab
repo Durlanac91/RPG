@@ -50,6 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8bb528206129b41a826331554177cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnGearChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &15262733681629621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,7 +495,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 15
-  m_Sprite: {fileID: 21300000, guid: f8d916881a19b7a4a99ec74753414a40, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -500,7 +503,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &663460791135470681
@@ -1146,7 +1149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: f8d916881a19b7a4a99ec74753414a40, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1154,7 +1157,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &663460793251485461
@@ -1317,6 +1320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664472734402321741}
   - component: {fileID: 605480783712783413}
+  - component: {fileID: 3608652238802498352}
   - component: {fileID: 664472734402321738}
   m_Layer: 0
   m_Name: Rogue_01
@@ -1362,6 +1366,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3608652238802498352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663460793554297897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115575e4e1bdfe64a88f80de15d4fa77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hood: {fileID: 848848750996929851}
+  pelvis: {fileID: 848848753936591457}
+  torso: {fileID: 848848747702887311}
+  weaponLeft: {fileID: 848848753783354967}
+  weaponRight: {fileID: 848848754355617367}
 --- !u!114 &664472734402321738
 MonoBehaviour:
   m_ObjectHideFlags: 0
