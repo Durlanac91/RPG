@@ -15,34 +15,18 @@ namespace Game.GameLogic
                 Destroy(this);
         }
 
-        //Coins
-        public float GetCoinsAmount()
+        //Resources
+
+        public int GetResource(string saveKey)
         {
-            return PlayerPrefs.GetFloat("Coins");
+            return PlayerPrefs.GetInt(saveKey + "_resource", 0);
         }
         
-        public void AddCoins(float amount)
+        public void SetResource(string saveKey, int amount)
         {
-            var coins = PlayerPrefs.GetFloat("Coins") + amount;
-            PlayerPrefs.SetFloat("Coins", coins);
+            PlayerPrefs.SetInt(saveKey + "_resource", amount);
         }
-        
-        public void UseCoins(float amount)
-        {
-            var coins = PlayerPrefs.GetFloat("Coins") - amount;
-            PlayerPrefs.SetFloat("Coins", coins);
-        }
-        
-        public float GetTrophiesAmount()
-        {
-            return PlayerPrefs.GetFloat("Trophies");
-        }
-        
-        public void AddTrophies(float amount)
-        {
-            var trophies = PlayerPrefs.GetFloat("Trophies") + amount;
-            PlayerPrefs.SetFloat("Trophies", trophies);
-        }
+
         // - - - -
 
         // Skins

@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class SpentableResource : MonoBehaviour
+namespace Game.GameLogic
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(fileName = "SpentableResource", menuName = "Gameplay/Economy/SpentableResource", order = 0)]
+    public class SpentableResource : ScriptableObject
     {
-        
-    }
+        [SerializeField] private string saveKey;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public UnityEvent OnChange;
+        private int _currentResource;
+
+        public int CurrentResource { get => _currentResource; }
+
+        // Used only by GameManager to load resources when game starts
+        public void Load()
+        {
+            _currentResource = PlayerSave.Instance.GetResource(saveKey);
+            OnChange?.Invoke();
+        }
+
+        public void AddResource(int amount)
+        {
+            _currentResource += amount;
+            PlayerSave.Instance.SetResource(saveKey, _currentResource);
+            OnChange?.Invoke();
+        }
+
+        public void RemoveResource(int amount)
+        {
+            _currentResource -= amount;
+            PlayerSave.Instance.SetResource(saveKey, _currentResource);
+            OnChange?.Invoke();
+        }
     }
 }

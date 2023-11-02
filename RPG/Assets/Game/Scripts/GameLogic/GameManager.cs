@@ -14,6 +14,7 @@ namespace Game.GameLogic
 
         private bool _isGameRunning;
         private bool _isInputAllowed;
+        private SpentableResource[] spentableResources;
 
         public bool IsGameRunning { get => _isGameRunning; }
         public bool IsInputAllowed { get => _isInputAllowed; }
@@ -28,7 +29,16 @@ namespace Game.GameLogic
 
         void Start()
         {
+            spentableResources = Resources.LoadAll<SpentableResource>("Configs/Economy");
 
+            foreach (var resource in spentableResources)
+            {
+                resource.Load();
+            }
+
+            _isGameRunning = true;
+            _isInputAllowed = true;
+            OnGameStart?.Invoke();
         }
     }
 }
