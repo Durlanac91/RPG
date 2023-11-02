@@ -1,3 +1,4 @@
+using Game.GameLogic.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,9 @@ namespace Game.GameLogic
 
         private bool _isGameRunning;
         private bool _isInputAllowed;
+
         private SpentableResource[] spentableResources;
+        private ShopItemConfig[] shopItemConfigs;
 
         public bool IsGameRunning { get => _isGameRunning; set => _isGameRunning = value; }
         public bool IsInputAllowed { get => _isInputAllowed; set => _isInputAllowed = value; }
@@ -29,6 +32,14 @@ namespace Game.GameLogic
 
         void Start()
         {
+            LoadGame();
+            _isGameRunning = true;
+            _isInputAllowed = true;
+            OnGameStart?.Invoke();
+        }
+
+        private void LoadGame()
+        {
             spentableResources = Resources.LoadAll<SpentableResource>("Configs/Economy");
 
             foreach (var resource in spentableResources)
@@ -36,9 +47,12 @@ namespace Game.GameLogic
                 resource.Load();
             }
 
-            _isGameRunning = true;
-            _isInputAllowed = true;
-            OnGameStart?.Invoke();
+            shopItemConfigs = Resources.LoadAll<ShopItemConfig>("Configs/ShopItems");
+
+            foreach (var config in shopItemConfigs)
+            {
+                config.Load();
+            }
         }
     }
 }

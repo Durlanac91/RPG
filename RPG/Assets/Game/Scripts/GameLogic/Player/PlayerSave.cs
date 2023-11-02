@@ -29,75 +29,28 @@ namespace Game.GameLogic
 
         // - - - -
 
-        // Skins
-        public void SetSkinUnlocked(string skinName)
+        // ShopItems
+
+        public bool IsItemBought(string itemName)
         {
-            PlayerPrefs.SetInt("skins_" + skinName, 1);
+            return Convert.ToBoolean(PlayerPrefs.GetInt("item_bought_" + itemName, 0));
         }
 
-        public bool GetIsSkinLocked(string skinName)
+        public void SetItemBought(string itemName)
         {
-            return PlayerPrefs.GetInt("skins_" + skinName, 0) == 0;
+            PlayerPrefs.SetInt("item_bought_" + itemName, 1);
         }
 
-        public int GetSkinsUnlocked()
+        public void IsItemEquipped(string itemName)
         {
-            return PlayerPrefs.GetInt("skinsUnlocked", 0);
+            PlayerPrefs.SetString("item_equipped", itemName);
         }
 
-        public void SetSkinsUnlocked(int skinsUnlocked)
-        {
-            PlayerPrefs.SetInt("skinsUnlocked", skinsUnlocked);
-        }
+        //public string GetEquippedSkin()
+        //{
+        //    return PlayerPrefs.GetString("skins_equipped", "skin_001");
+        //}
 
-        public void UnlockNextSkin()
-        {
-            var current = GetSkinsUnlocked();
-            SetSkinsUnlocked(current + 1);
-        }
-
-        public void SetEquippedSkin(string skinName)
-        {
-            PlayerPrefs.SetString("skins_equipped", skinName);
-        }
-
-        public string GetEquippedSkin()
-        {
-            return PlayerPrefs.GetString("skins_equipped", "skin_001");
-        }
-        // - - - -
-
-        // Onboarding
-
-        public void SetLevelOnboaringFinished()
-        {
-            PlayerPrefs.SetInt("onboarding_level_finished", 1);
-        }
-
-        public bool GetIsLevelOnboaringFinished()
-        {
-            return PlayerPrefs.GetInt("onboarding_level_finished", 0) == 0;
-        }
-
-        public void SetBoosterOnboaringShown()
-        {
-            PlayerPrefs.SetInt("onboarding_booster_shown", 1);
-        }
-
-        public bool GetIsBoosterOnboaringShown()
-        {
-            return PlayerPrefs.GetInt("onboarding_booster_shown", 0) == 0;
-        }
-
-        public void SetSkinDeepLink(bool status)
-        {
-            PlayerPrefs.SetInt("skin_deepLink", Convert.ToInt32(status));
-        }
-
-        public bool IsSkinDeepLinkActive()
-        {
-            return Convert.ToBoolean(PlayerPrefs.GetInt("skin_deepLink", 0));
-        }
         // - - - -
 
         public void DeleteAllData()

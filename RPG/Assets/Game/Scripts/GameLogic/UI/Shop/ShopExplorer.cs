@@ -28,6 +28,26 @@ namespace Game.GameLogic.UI
             }
         }
 
+        public void DeselectAllItems()
+        {
+            foreach (var item in items.GetComponentsInChildren<ShopExplorerItem>())
+            {
+                item.Deselect();
+            }
+        }
+
+        public void BuySelectedItemFromShop()
+        {
+            foreach (var item in items.GetComponentsInChildren<ShopExplorerItem>())
+            {
+                if (item.IsSelected)
+                {
+                    item.Buy();
+                    break;
+                }
+            }
+        }
+
         private void OnDisable()
         {
             foreach (var item in items.GetComponentsInChildren<ShopExplorerItem>())
