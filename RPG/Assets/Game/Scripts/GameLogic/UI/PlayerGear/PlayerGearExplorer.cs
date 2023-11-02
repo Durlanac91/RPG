@@ -57,7 +57,7 @@ namespace Game.GameLogic.UI
             foreach (var config in _playerGearItemConfigs)
             {
                 if (config.IsEquipped) continue;
-                if (config.IsOwned == false) continue;
+                if (config.IsOwned() == false) continue;
 
                 var newItem = Instantiate(prefabForUnequipped, items.transform);
                 newItem.Initialize(config);
@@ -76,6 +76,7 @@ namespace Game.GameLogic.UI
         public void EquipSelectedItemFromGear()
         {
             bool noneItemSelected = true;
+            bool isItemSuccessfullyEquipped = false;
             foreach (var item in items.GetComponentsInChildren<PlayerGearExplorerItem>())
             {
                 if (item.IsSelected)
@@ -88,14 +89,22 @@ namespace Game.GameLogic.UI
                             && slot.SlotType == item.PlayerGearItemConfig.GearItemType)
                         {
                             item.Equip();
-                            noneItemSelected = false;
+                            isItemSuccessfullyEquipped = true;
                             break;
                         }
                     }
+
+                    noneItemSelected = false;
                 }
             }
 
             if (noneItemSelected) return;
+            
+            if (isItemSuccessfullyEquipped == false)
+            {
+                GetComponentInChildren<PlayerGearCannotEquipWarning>().Show();
+                return;
+            }
 
             DestroyAllItems();
             GenerateEquippedItems();

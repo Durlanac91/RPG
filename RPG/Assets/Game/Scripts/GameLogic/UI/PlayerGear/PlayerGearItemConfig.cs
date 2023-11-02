@@ -13,19 +13,21 @@ namespace Game.GameLogic.UI
         [SerializeField] private string gearItemClass;
         [Tooltip("Gear Item Type is used as a Config Key for classification")]
         [SerializeField] private string gearItemType;
-        private bool _isOwned;
         private bool _isEquipped;
 
         public void Load()
         {
-            _isOwned = PlayerSave.Instance.IsItemBought(name);
             _isEquipped = PlayerSave.Instance.IsItemEquipped(name);
+        }
+
+        public bool IsOwned()
+        {
+            return PlayerSave.Instance.IsItemBought(name);
         }
 
         //public int Price { get => price; }
         public string GearItemClass { get => gearItemClass; }
         public string GearItemType { get => gearItemType; }
-        public bool IsOwned { get => _isOwned; }
         public bool IsEquipped { get => _isEquipped; }
         public string DisplayName { get => displayName; }
     }
