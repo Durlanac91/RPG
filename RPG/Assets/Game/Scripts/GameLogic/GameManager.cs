@@ -16,8 +16,9 @@ namespace Game.GameLogic
         private bool _isGameRunning;
         private bool _isInputAllowed;
 
-        private SpentableResource[] spentableResources;
-        private ShopItemConfig[] shopItemConfigs;
+        private SpentableResource[] _spentableResources;
+        private ShopItemConfig[] _shopItemConfigs;
+        private PlayerGearItemConfig[] _playerGearItemConfig;
 
         public bool IsGameRunning { get => _isGameRunning; set => _isGameRunning = value; }
         public bool IsInputAllowed { get => _isInputAllowed; set => _isInputAllowed = value; }
@@ -40,16 +41,23 @@ namespace Game.GameLogic
 
         private void LoadGame()
         {
-            spentableResources = Resources.LoadAll<SpentableResource>("Configs/Economy");
+            _spentableResources = Resources.LoadAll<SpentableResource>("Configs/Economy");
 
-            foreach (var resource in spentableResources)
+            foreach (var resource in _spentableResources)
             {
                 resource.Load();
             }
 
-            shopItemConfigs = Resources.LoadAll<ShopItemConfig>("Configs/ShopItems");
+            _shopItemConfigs = Resources.LoadAll<ShopItemConfig>("Configs/ShopItems");
 
-            foreach (var config in shopItemConfigs)
+            foreach (var config in _shopItemConfigs)
+            {
+                config.Load();
+            }
+
+            _playerGearItemConfig = Resources.LoadAll<PlayerGearItemConfig>("Configs/PlayerGearItems");
+
+            foreach (var config in _playerGearItemConfig)
             {
                 config.Load();
             }

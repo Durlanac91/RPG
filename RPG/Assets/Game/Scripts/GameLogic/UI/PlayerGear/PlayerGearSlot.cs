@@ -11,9 +11,27 @@ namespace Game.GameLogic.UI
         [Tooltip("Slot Type is used for classification")]
         [SerializeField] private string slotType;
 
-        void Start()
-        {
+        private PlayerGearExplorer _playerGearExplorer;
 
+        public void Initialize()
+        {
+            _playerGearExplorer = GetComponentInParent<PlayerGearExplorer>();
+        }
+
+        public string SlotClass { get => slotClass; }
+        public string SlotType { get => slotType; }
+
+        public bool IsSlotEmpty()
+        {
+            foreach (var config in _playerGearExplorer.PlayerGearItemConfigs)
+            {
+                if (config.IsEquipped == false) continue;
+
+                if (config.GearItemClass == SlotClass && config.GearItemType == slotType)
+                    return false;
+            }
+
+            return true;
         }
     }
 }

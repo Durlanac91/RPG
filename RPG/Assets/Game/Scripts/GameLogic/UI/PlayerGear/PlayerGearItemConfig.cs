@@ -19,11 +19,12 @@ namespace Game.GameLogic.UI
         public void Load()
         {
             _isOwned = PlayerSave.Instance.IsItemBought(name);
-            //_isEquipped
+            _isEquipped = PlayerSave.Instance.IsItemEquipped(name);
         }
 
         //public int Price { get => price; }
         public string GearItemClass { get => gearItemClass; }
+        public string GearItemType { get => gearItemType; }
         public bool IsOwned { get => _isOwned; }
         public bool IsEquipped { get => _isEquipped; }
         public string DisplayName { get => displayName; }

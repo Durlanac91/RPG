@@ -712,7 +712,7 @@ RectTransform:
   - {fileID: 323326357}
   - {fileID: 285852701}
   m_Father: {fileID: 1077271256}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -4578,7 +4578,7 @@ RectTransform:
   - {fileID: 618140692}
   - {fileID: 287130748}
   m_Father: {fileID: 1077271256}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -6002,7 +6002,7 @@ GameObject:
   - component: {fileID: 811827475}
   - component: {fileID: 811827474}
   m_Layer: 5
-  m_Name: PlayerGearExplorerItem
+  m_Name: PlayerGearExplorerItem_Equipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6024,8 +6024,8 @@ RectTransform:
   - {fileID: 178264956}
   - {fileID: 1431695643}
   - {fileID: 1613134799}
-  m_Father: {fileID: 1246001960}
-  m_RootOrder: 2
+  m_Father: {fileID: 1077271256}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7155,12 +7155,12 @@ GameObject:
   - component: {fileID: 1046709783}
   - component: {fileID: 1046709782}
   m_Layer: 5
-  m_Name: PlayerGearExplorerItem
+  m_Name: PlayerGearExplorerItem_Unequipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1046709781
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7526,6 +7526,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 811827473}
   - {fileID: 1246001960}
   - {fileID: 47063545}
   - {fileID: 1823650671}
@@ -8386,9 +8387,8 @@ RectTransform:
   m_Children:
   - {fileID: 145667704}
   - {fileID: 12071830}
-  - {fileID: 811827473}
   m_Father: {fileID: 1077271256}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -9097,9 +9097,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.GameLogic.UI.ShopExplorer, Assembly-CSharp
-        m_MethodName: BuySelectedItemFromShop
+      - m_Target: {fileID: 2085541559}
+        m_TargetAssemblyTypeName: Game.GameLogic.UI.PlayerGearExplorer, Assembly-CSharp
+        m_MethodName: EquipSelectedItemFromGear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10180,9 +10180,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.GameLogic.UI.ShopExplorer, Assembly-CSharp
-        m_MethodName: BuySelectedItemFromShop
+      - m_Target: {fileID: 2085541559}
+        m_TargetAssemblyTypeName: Game.GameLogic.UI.PlayerGearExplorer, Assembly-CSharp
+        m_MethodName: UnequipSelectedItemFromGear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11241,7 +11241,7 @@ RectTransform:
   - {fileID: 1406333181}
   - {fileID: 1665732232}
   m_Father: {fileID: 1077271256}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -12156,7 +12156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: {fileID: 200528963}
-  prefab: {fileID: 1046709787}
+  prefabForEquipped: {fileID: 811827476}
+  prefabForUnequipped: {fileID: 1046709787}
 --- !u!1 &2100253227
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,15 +41,20 @@ namespace Game.GameLogic
             PlayerPrefs.SetInt("item_bought_" + itemName, 1);
         }
 
-        public void IsItemEquipped(string itemName)
+        public void SetItemEquipped(string itemName)
         {
-            PlayerPrefs.SetString("item_equipped", itemName);
+            PlayerPrefs.SetInt("item_equipped_" + itemName, 1);
         }
 
-        //public string GetEquippedSkin()
-        //{
-        //    return PlayerPrefs.GetString("skins_equipped", "skin_001");
-        //}
+        public void SetItemUnequipped(string itemName)
+        {
+            PlayerPrefs.SetInt("item_equipped_" + itemName, 0);
+        }
+
+        public bool IsItemEquipped(string itemName)
+        {
+            return Convert.ToBoolean(PlayerPrefs.GetInt("item_equipped_" + itemName, 0));
+        }
 
         // - - - -
 

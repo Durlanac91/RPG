@@ -18,6 +18,7 @@ namespace Game.GameLogic.UI
         private bool _isSelected;
 
         public bool IsSelected { get => _isSelected; }
+        public PlayerGearItemConfig PlayerGearItemConfig { get => _playerGearItemConfig; }
 
         private void Start()
         {
@@ -35,7 +36,7 @@ namespace Game.GameLogic.UI
 
         public void Select()
         {
-            //_shopExplorer.DeselectAllItems();
+            _playerGearExplorer.DeselectAllItems();
             _isSelected = true;
             selectedOverlay.gameObject.SetActive(true);
         }
@@ -48,14 +49,16 @@ namespace Game.GameLogic.UI
 
         public void Equip()
         {
-            //PlayerSave.Instance.SetItemBought(_shopItemConfig.name);
-            //_shopItemConfig.Load();
-            //_shopExplorer.DeselectAllItems();
+            PlayerSave.Instance.SetItemEquipped(_playerGearItemConfig.name);
+            _playerGearItemConfig.Load();
+            _playerGearExplorer.DeselectAllItems();
         }
 
         public void Unequip()
         {
-
+            PlayerSave.Instance.SetItemUnequipped(_playerGearItemConfig.name);
+            _playerGearItemConfig.Load();
+            _playerGearExplorer.DeselectAllItems();
         }
     }
 }
