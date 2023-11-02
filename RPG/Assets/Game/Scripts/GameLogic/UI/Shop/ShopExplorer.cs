@@ -9,7 +9,7 @@ namespace Game.GameLogic.UI
         [SerializeField] private GameObject items;
         [SerializeField] private ShopExplorerItem prefab;
 
-        private ShopItemConfig[] shopItemConfigs;
+        private ShopItemConfig[] _shopItemConfigs;
         private string _shopItemsPath;
 
         public string ShopItemsPath { get => _shopItemsPath; set => _shopItemsPath = value; }
@@ -18,9 +18,9 @@ namespace Game.GameLogic.UI
         {
             GameManager.Instance.IsInputAllowed = false;
 
-            shopItemConfigs = Resources.LoadAll<ShopItemConfig>(_shopItemsPath);
+            _shopItemConfigs = Resources.LoadAll<ShopItemConfig>(_shopItemsPath);
 
-            foreach (var config in shopItemConfigs)
+            foreach (var config in _shopItemConfigs)
             {
                 var newItem = Instantiate(prefab, items.transform);
                 newItem.Initialize(config);

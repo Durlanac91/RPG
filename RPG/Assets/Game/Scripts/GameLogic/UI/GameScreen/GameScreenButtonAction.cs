@@ -12,6 +12,11 @@ namespace Game.GameLogic.UI
             UIPanelSettings.Instance.Show();
         }
 
+        public void OpenUIPanelPlayerGear()
+        {
+            UIPanelPlayerGear.Instance.Show();
+        }
+
         public void ExitToMain()
         {
             SceneManager.LoadScene("MainScene", LoadSceneMode.Single);

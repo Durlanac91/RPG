@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08d81b5e397ede4989fc856300fb409, type: 3}
   m_Name: Hood_05
   m_EditorClassIdentifier: 
+  displayName: Hood 5
   price: 500
   shopItemType: Clothes

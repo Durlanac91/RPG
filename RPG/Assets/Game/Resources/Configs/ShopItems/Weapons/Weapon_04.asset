@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08d81b5e397ede4989fc856300fb409, type: 3}
   m_Name: Weapon_04
   m_EditorClassIdentifier: 
+  displayName: Weapon 4
   price: 400
   shopItemType: Weapons

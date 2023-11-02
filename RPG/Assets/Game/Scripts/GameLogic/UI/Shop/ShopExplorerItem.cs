@@ -35,7 +35,7 @@ namespace Game.GameLogic.UI
             _shopItemConfig = config;
             _price = config.Price;
             textPrice.text = _price.ToString();
-            textName.text = config.name;
+            textName.text = config.DisplayName;
             mainIcon.sprite = Resources.Load<Sprite>("Assets/" + config.ShopItemType + "/" + config.name);
             _button = GetComponent<Button>();
             _shopExplorer = GetComponentInParent<ShopExplorer>();
