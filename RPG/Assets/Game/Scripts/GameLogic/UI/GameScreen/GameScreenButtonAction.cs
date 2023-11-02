@@ -16,5 +16,10 @@ namespace Game.GameLogic.UI
         {
             SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
         }
+
+        public void BuySelectedItemFromShop()
+        {
+
+        }
     }
 }

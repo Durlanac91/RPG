@@ -16,8 +16,8 @@ namespace Game.GameLogic
         private bool _isInputAllowed;
         private SpentableResource[] spentableResources;
 
-        public bool IsGameRunning { get => _isGameRunning; }
-        public bool IsInputAllowed { get => _isInputAllowed; }
+        public bool IsGameRunning { get => _isGameRunning; set => _isGameRunning = value; }
+        public bool IsInputAllowed { get => _isInputAllowed; set => _isInputAllowed = value; }
 
         private void Awake()
         {

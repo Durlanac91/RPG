@@ -6,6 +6,7 @@ namespace Game.GameLogic
 {
     public class ShopKeeper : MonoBehaviour
     {
+        // Keeper Name is used as a Config Key
         [SerializeField] private string keeperName;
 
         public string KeeperName { get => keeperName; }

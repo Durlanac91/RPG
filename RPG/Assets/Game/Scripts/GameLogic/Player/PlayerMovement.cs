@@ -28,6 +28,8 @@ namespace Game.GameLogic
 
         private void FixedUpdate()
         {
+            if (GameManager.Instance.IsInputAllowed == false) return;
+
             var nextPosition = _moveForce * _speed * Time.fixedDeltaTime;
 
             animator.SetBool("Is_Running", nextPosition.x != 0 || nextPosition.y != 0);

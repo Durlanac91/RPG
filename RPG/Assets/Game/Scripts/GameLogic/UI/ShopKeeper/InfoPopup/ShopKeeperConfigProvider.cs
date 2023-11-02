@@ -6,13 +6,13 @@ using UnityEngine;
 namespace Game.GameLogic.UI
 {
     [CreateAssetMenu(fileName = "ShopKeeperDescriptionConfigProvider", menuName = "Gameplay/Info/ShopKeeperDescriptionConfigProvider", order = 0)]
-    public class ShopKeeperDescriptionConfigProvider : ScriptableObject
+    public class ShopKeeperConfigProvider : ScriptableObject
     {
-        [SerializeField] private List<ShopKeeperDescriptionConfig> infoPopupDescriptionConfig;
+        [SerializeField] private List<ShopKeeperConfig> infoPopupDescriptionConfig;
 
-        public List<ShopKeeperDescriptionConfig> InfoPopupDescriptionConfig { get => infoPopupDescriptionConfig; }
+        public List<ShopKeeperConfig> InfoPopupDescriptionConfig { get => infoPopupDescriptionConfig; }
 
-        public ShopKeeperDescriptionConfig GetConfig(string shopKeeperName)
+        public ShopKeeperConfig GetConfig(string shopKeeperName)
         {
             foreach (var config in infoPopupDescriptionConfig)
             {

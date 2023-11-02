@@ -17,15 +17,21 @@ public class InfoPopupController : MonoBehaviour
             Destroy(gameObject);
     }
 
-    [SerializeField] private ShopKeeperDescriptionConfigProvider shopKeeperDescriptionConfigProvider;
+    [SerializeField] private ShopKeeperConfigProvider shopKeeperDescriptionConfigProvider;
     [SerializeField] private TextMeshProUGUI textInfo;
 
     public void Show(string keeperName)
     {
         var config = shopKeeperDescriptionConfigProvider.GetConfig(keeperName);
         textInfo.text = config.Description;
+        UIPanelShop.Instance.ShopExplorer.ShopItemsPath = config.ShopItemsPath;
         content.SetActive(true);
         StartCoroutine(AnimationIn());
+    }
+
+    public void OpenUIPanelShop()
+    {
+        UIPanelShop.Instance.Show();
     }
 
     public void Hide()
