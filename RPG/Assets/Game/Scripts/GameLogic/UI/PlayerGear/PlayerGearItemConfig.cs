@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GearItemType
+{
+    Hood = 0,
+    Pelvis = 1,
+    Torso = 2,
+    Weapon = 3
+}
+
 namespace Game.GameLogic.UI
 {
     [CreateAssetMenu(fileName = "PlayerGearItemConfig", menuName = "Gameplay/PlayerGear/PlayerGearItemConfig", order = 0)]
@@ -12,7 +20,7 @@ namespace Game.GameLogic.UI
         [Tooltip("Gear Item Class is used as a Config Key for loading icons and classification")]
         [SerializeField] private string gearItemClass;
         [Tooltip("Gear Item Type is used as a Config Key for classification")]
-        [SerializeField] private string gearItemType;
+        [SerializeField] private GearItemType gearItemType;
         private bool _isEquipped;
 
         public void Load()
@@ -27,7 +35,7 @@ namespace Game.GameLogic.UI
 
         public int Price { get => price; }
         public string GearItemClass { get => gearItemClass; }
-        public string GearItemType { get => gearItemType; }
+        public GearItemType GearItemType { get => gearItemType; }
         public bool IsEquipped { get => _isEquipped; }
         public string DisplayName { get => displayName; }
     }

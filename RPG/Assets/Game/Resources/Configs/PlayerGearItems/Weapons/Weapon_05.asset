@@ -15,4 +15,4 @@ MonoBehaviour:
   price: 500
   displayName: Weapon 5
   gearItemClass: Weapons
-  gearItemType: Weapon
+  gearItemType: 3

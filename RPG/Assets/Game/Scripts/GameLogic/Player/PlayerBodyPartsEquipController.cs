@@ -48,13 +48,13 @@ namespace Game.GameLogic
             {
                 if (config.IsEquipped == false) continue;
 
-                if (config.GearItemType == "Hood")
+                if (config.GearItemType == GearItemType.Hood)
                     hood.sprite = Resources.Load<Sprite>("Assets/" + config.GearItemClass + "/" + config.name);
-                else if (config.GearItemType == "Pelvis")
+                else if (config.GearItemType == GearItemType.Pelvis)
                     pelvis.sprite = Resources.Load<Sprite>("Assets/" + config.GearItemClass + "/" + config.name);
-                else if (config.GearItemType == "Torso")
+                else if (config.GearItemType == GearItemType.Torso)
                     torso.sprite = Resources.Load<Sprite>("Assets/" + config.GearItemClass + "/" + config.name);
-                else if (config.GearItemType == "Weapon")
+                else if (config.GearItemType == GearItemType.Weapon)
                 {
                     weaponLeft.sprite = Resources.Load<Sprite>("Assets/" + config.GearItemClass + "/" + config.name);
                     weaponRight.sprite = Resources.Load<Sprite>("Assets/" + config.GearItemClass + "/" + config.name);

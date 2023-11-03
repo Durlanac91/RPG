@@ -15,4 +15,4 @@ MonoBehaviour:
   price: 100
   displayName: Torso 1
   gearItemClass: Clothes
-  gearItemType: Torso
+  gearItemType: 2

@@ -9,7 +9,7 @@ namespace Game.GameLogic.UI
         [Tooltip("Slot Class is used for classification")]
         [SerializeField] private string slotClass;
         [Tooltip("Slot Type is used for classification")]
-        [SerializeField] private string slotType;
+        [SerializeField] private GearItemType slotType;
 
         private PlayerGearExplorer _playerGearExplorer;
 
@@ -19,7 +19,7 @@ namespace Game.GameLogic.UI
         }
 
         public string SlotClass { get => slotClass; }
-        public string SlotType { get => slotType; }
+        public GearItemType SlotType { get => slotType; }
 
         public bool IsSlotEmpty()
         {

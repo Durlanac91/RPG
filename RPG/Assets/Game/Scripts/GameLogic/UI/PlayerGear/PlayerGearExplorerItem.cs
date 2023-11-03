@@ -11,6 +11,7 @@ namespace Game.GameLogic.UI
         [SerializeField] private SpentableResource spentableResource;
         [SerializeField] private Image selectedOverlay;
         [SerializeField] private TextMeshProUGUI textName;
+        [SerializeField] private TextMeshProUGUI textPrice;
         [SerializeField] private Image mainIcon;
 
         private PlayerGearExplorer _playerGearExplorer;
@@ -23,6 +24,7 @@ namespace Game.GameLogic.UI
         public void Initialize(PlayerGearItemConfig config)
         {
             _playerGearItemConfig = config;
+            textPrice.text = config.Price.ToString();
             textName.text = config.DisplayName;
             mainIcon.sprite = Resources.Load<Sprite>("Assets/" + config.GearItemClass + "/" + config.name);
 

@@ -15,4 +15,4 @@ MonoBehaviour:
   price: 200
   displayName: Pelvis 2
   gearItemClass: Clothes
-  gearItemType: Pelvis
+  gearItemType: 1
